@@ -4,108 +4,102 @@
 ![Flask](https://img.shields.io/badge/Flask-2.x-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-**py-commerce-api** é uma API RESTful robusta e escalável projetada para um aplicativo de marketplace completo. Este projeto segue os princípios da **Clean Architecture**, garantindo modularidade, testabilidade e facilidade de manutenção.
+**py-commerce-api** is a robust and scalable RESTful API designed for a complete marketplace application. This project follows the principles of **Clean Architecture**, ensuring modularity, testability, and maintainability.
 
+## **Table of Contents**
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Contribution](#contribution)
+- [License](#license)
 
-## **Índice**
-- [Recursos](#recursos)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Testes](#testes)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+## **Features**
+- User registration with data validation.
+- Modular architecture based on **Clean Architecture**.
+- Support for environment variables using `.env`.
+- Ready-to-use configuration for Docker and Docker Compose.
+- Unit tests organized by layers.
 
-
-## **Recursos**
-- Cadastro de usuários com validação de dados.
-- Arquitetura modular baseada na **Clean Architecture**.
-- Suporte para variáveis de ambiente com `.env`.
-- Configuração pronta para Docker e Docker Compose.
-- Testes unitários organizados por camadas.
-
-
-## **Tecnologias Utilizadas**
+## **Technologies Used**
 - **Python 3.10**
-- **Flask**: Framework web para construção da API.
-- **Docker**: Para containerização do projeto.
-- **Docker Compose**: Para orquestração de serviços.
-- **pylint**: Para análise estática de código.
-- **python-dotenv**: Para gerenciamento de variáveis de ambiente.
+- **Flask**: Web framework for building the API.
+- **Docker**: For containerizing the project.
+- **Docker Compose**: For orchestrating services.
+- **pylint**: For static code analysis.
+- **python-dotenv**: For managing environment variables.
 
-
-## **Estrutura do Projeto**
-A estrutura do projeto segue os princípios da **Clean Architecture**:
+## **Project Structure**
+The project structure follows the principles of **Clean Architecture**:
 
 ```
 py-commerce-api/
-├── .env                  # Variáveis de ambiente
-├── .gitignore            # Arquivos ignorados pelo Git
-├── docker-compose.yaml   # Configuração do Docker Compose
-├── Dockerfile            # Configuração do Docker
-├── Makefile              # Comandos úteis para automação
-├── requirements.txt      # Dependências do projeto
-├── cmd/                  # Pontos de entrada da aplicação
+├── .env                  # Environment variables
+├── .gitignore            # Files ignored by Git
+├── docker-compose.yaml   # Docker Compose configuration
+├── Dockerfile            # Docker configuration
+├── Makefile              # Useful automation commands
+├── requirements.txt      # Project dependencies
+├── cmd/                  # Application entry points
 │   └── server/
-│       └── main.py       # Inicialização do servidor Flask
-├── src/                  # Código-fonte principal
-│   ├── core/             # Regras de negócio (entidades e casos de uso)
-│   ├── infra/            # Infraestrutura (banco de dados, web)
-│   ├── interfaces/       # Interfaces (contratos para repositórios)
-│   ├── services/         # Serviços externos (ex.: envio de e-mails)
-│   └── tests/            # Testes organizados por camada
-└── README.md             # Documentação do projeto
+│       └── main.py       # Flask server initialization
+├── src/                  # Main source code
+│   ├── core/             # Business rules (entities and use cases)
+│   ├── infra/            # Infrastructure (database, web)
+│   ├── interfaces/       # Interfaces (repository contracts)
+│   ├── services/         # External services (e.g., email sending)
+│   └── tests/            # Tests organized by layer
+└── README.md             # Project documentation
 ```
 
+## **Installation**
 
-## **Instalação**
+### **Prerequisites**
+- Python 3.10 or higher
+- Docker and Docker Compose (optional, for running in containers)
 
-### **Pré-requisitos**
-- Python 3.10 ou superior
-- Docker e Docker Compose (opcional, para execução em contêineres)
-
-### **Passos**
-1. Clone o repositório:
+### **Steps**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/seu-usuario/py-commerce-api.git
+   git clone https://github.com/your-username/py-commerce-api.git
    cd py-commerce-api
    ```
 
-2. Crie e ative um ambiente virtual:
+2. Create and activate a virtual environment:
    ```bash
    python -m venv venv
-   source venv/Scripts/activate  # No Windows
-   source venv/bin/activate      # No Linux/Mac
+   source venv/Scripts/activate  # On Windows
+   source venv/bin/activate      # On Linux/Mac
    ```
 
-3. Instale as dependências:
+3. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Configure as variáveis de ambiente:
-   - Copie o arquivo `.env.example` para `.env`:
+4. Configure the environment variables:
+   - Copy the `.env.example` file to `.env`:
      ```bash
      cp .env.example .env
      ```
-   - Edite o arquivo `.env` conforme necessário.
+   - Edit the `.env` file as needed.
 
-5. Execute o servidor:
+5. Run the server:
    ```bash
    python cmd/server/main.py
    ```
 
-6. Acesse a API em: [http://localhost:5000](http://localhost:5000)
+6. Access the API at: [http://localhost:5000](http://localhost:5000)
 
+## **Usage**
 
-## **Uso**
-
-### **Endpoints Disponíveis**
+### **Available Endpoints**
 #### **POST /users**
-Cadastra um novo usuário.
+Registers a new user.
 
-**Exemplo de Requisição:**
+**Request Example:**
 ```bash
 curl -X POST http://localhost:5000/users \
 -H "Content-Type: application/json" \
@@ -116,7 +110,7 @@ curl -X POST http://localhost:5000/users \
 }'
 ```
 
-**Exemplo de Resposta:**
+**Response Example:**
 ```json
 {
   "id": 1,
@@ -126,65 +120,61 @@ curl -X POST http://localhost:5000/users \
 }
 ```
 
+## **Tests**
 
-## **Testes**
-
-### **Executando Testes**
-1. Certifique-se de que o ambiente virtual está ativado.
-2. Execute os testes com o `unittest`:
+### **Running Tests**
+1. Ensure the virtual environment is activated.
+2. Run the tests using `unittest`:
    ```bash
    python -m unittest discover -s src/tests
    ```
 
-
-## **Comandos Úteis**
+## **Useful Commands**
 
 ### **Makefile**
-- Criar ambiente virtual:
+- Create a virtual environment:
   ```bash
   make venv
   ```
-- Instalar dependências:
+- Install dependencies:
   ```bash
   make install
   ```
-- Executar o servidor:
+- Run the server:
   ```bash
   make run
   ```
-- Limpar o ambiente virtual:
+- Clean the virtual environment:
   ```bash
   make clean
   ```
 
 ### **Docker**
-- Construir a imagem Docker:
+- Build the Docker image:
   ```bash
   docker build -t py-commerce-api .
   ```
-- Executar com Docker Compose:
+- Run with Docker Compose:
   ```bash
   docker-compose up
   ```
 
-
-## **Contribuição**
-Contribuições são bem-vindas! Siga os passos abaixo para contribuir:
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou correção:
+## **Contribution**
+Contributions are welcome! Follow the steps below to contribute:
+1. Fork the repository.
+2. Create a branch for your feature or fix:
    ```bash
-   git checkout -b minha-feature
+   git checkout -b my-feature
    ```
-3. Faça commit das suas alterações:
+3. Commit your changes:
    ```bash
-   git commit -m "Adiciona minha feature"
+   git commit -m "Add my feature"
    ```
-4. Envie para o repositório remoto:
+4. Push to the remote repository:
    ```bash
-   git push origin minha-feature
+   git push origin my-feature
    ```
-5. Abra um Pull Request.
+5. Open a Pull Request.
 
-
-## **Licença**
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## **License**
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
